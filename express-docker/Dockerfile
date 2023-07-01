@@ -1,9 +1,12 @@
 #just specify the image docker
 
-FROM node:18.16.0-alpine
+FROM node:18-alpine
 
 # defined the dependence that i need to my project
-RUN npm install 
+WORKDIR  /usr/app
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./ 
 
 #default command
-CMD [ "npm", "start" ]
+CMD [ "npm", "start"]
